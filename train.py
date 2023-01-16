@@ -365,20 +365,7 @@ parameters_gb = {
   'estimators__lgbm__feature_fraction' : [0.4, 0.6],
 }
 
-est_xgb = XGBClassifier()
-est_cbc = CatBoostClassifier()
 est_lgbm = LGBMClassifier()
-
-estimators_st = [
-    ('lgbm', est_lgbm),          
-    ('cbc', est_cbc)
-]
-
-
-stacked_estimator =  StackingClassifier(estimators=estimators_st,
-                                    final_estimator=LogisticRegression,
-                                    stack_method='predict_proba'
-                                  )
 
 full_pipeline_gs = GridSearchCV(estimator =Pipeline([
     ("preprocessor", preprocessor),
